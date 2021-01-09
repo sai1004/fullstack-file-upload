@@ -40,6 +40,13 @@ export class FilesController {
                 uploadPath = path.join(__dirname, "../../assets" + "/uploads/" + sampleFile.name);
 
                 console.log("+++++uploadPath++++++", uploadPath);
+
+                /* File Extension check */
+                if (!request.files.sampleFile.name.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
+                    response.status(400).send({ status: 0, error: "Only image files are allowed!" });
+                    return;
+                }
+
                 let result = null;
 
                 reqData.name = sampleFile.name;

@@ -3,6 +3,7 @@ const app = express();
 import { createConnection } from "typeorm";
 import * as Config from "./config/config";
 const bodyParser = require("body-parser");
+const fileupload = require("express-fileupload");
 const dotenv = require("dotenv");
 const logger = require("morgan");
 dotenv.config();
@@ -11,15 +12,16 @@ const port = process.env.PORT;
 
 import { FilesController } from "../src/routes/FilesController";
 
-const filesRoutes = new FilesController();
-
 const initServer = async () => {
     try {
         const conn = await createConnection(Config.dbConfig);
         if (conn.isConnected) {
+            const filesRoutes = new FilesController();
+
             /* ''''''' middlewares ''''''''' */
             app.use(express.urlencoded({ extended: false }));
             app.use(bodyParser.json());
+            app.use(fileupload());
             app.use(bodyParser.urlencoded({ extended: false }));
             app.use(logger("common"));
 
@@ -28,7 +30,7 @@ const initServer = async () => {
                 res.json({ message: " Hello App Works!! " });
             });
 
-            // app.use("/api/file", filesRoutes.getRouter());
+            app.use("/api/file", filesRoutes.getRouter());
 
             /* ''''''' Start server ''''''''' */
             app.listen(port, (err: any) => {

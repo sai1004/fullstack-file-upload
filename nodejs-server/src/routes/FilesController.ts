@@ -28,6 +28,7 @@ export class FilesController {
                 let uploadPath: any;
 
                 console.log("------------fileupload start------------------");
+                console.log("files", request.files);
 
                 if (!request.files || Object.keys(request.files).length === 0) {
                     response.status(400).send("NO Files were uploaded.");
@@ -40,7 +41,10 @@ export class FilesController {
 
                 let result = null;
 
-                // result = await this.service.save(reqData);
+                reqData.name = sampleFile.name;
+                reqData.mimeType = sampleFile.mimetype;
+                reqData.url = uploadPath;
+                result = await this.service.save(reqData);
 
                 response.send({ status: 1, data: result });
             } catch (error) {

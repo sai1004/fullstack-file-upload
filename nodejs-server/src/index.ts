@@ -5,6 +5,7 @@ import * as Config from "./config/config";
 const bodyParser = require("body-parser");
 const fileupload = require("express-fileupload");
 const dotenv = require("dotenv");
+const cors = require("cors");
 const logger = require("morgan");
 dotenv.config();
 
@@ -24,7 +25,7 @@ const initServer = async () => {
             app.use(fileupload());
             app.use(bodyParser.urlencoded({ extended: false }));
             app.use(logger("common"));
-
+            app.use(cors());
             /* ''''''' App Routes ''''''''' */
             app.get("/api", (req: any, res: any) => {
                 res.json({ message: " Hello App Works!! " });

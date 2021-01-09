@@ -24,7 +24,7 @@ export class FilesController {
         this.router.post("/upload", async (request: any, response: any) => {
             try {
                 let reqData: any = {};
-                let sampleFile;
+                let file;
                 let uploadPath: any;
 
                 console.log("------------fileupload start------------------");
@@ -35,26 +35,26 @@ export class FilesController {
                     return;
                 }
 
-                sampleFile = await request.files.sampleFile;
+                file = await request.files.file;
 
-                uploadPath = path.join(__dirname, "../../assets" + "/uploads/" + sampleFile.name);
+                uploadPath = path.join(__dirname, "../../assets" + "/uploads/" + file.name);
 
                 console.log("+++++uploadPath++++++", uploadPath);
 
                 /* File Extension check */
-                if (!request.files.sampleFile.name.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
+                if (!request.files.file.name.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
                     response.status(400).send({ status: 0, error: "Only image files are allowed!" });
                     return;
                 }
 
                 let result = null;
 
-                reqData.name = sampleFile.name;
-                reqData.mimeType = sampleFile.mimetype;
+                reqData.name = file.name;
+                reqData.mimeType = file.mimetype;
                 reqData.url = uploadPath;
                 result = await this.service.save(reqData);
 
-                sampleFile.mv(uploadPath, (err: any) => {
+                file.mv(uploadPath, (err: any) => {
                     if (err) {
                         return response.send({ status: 0, error: "error while saving file!" });
                     }

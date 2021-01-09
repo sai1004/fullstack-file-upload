@@ -11,10 +11,12 @@ export class FilesService {
 
     async save(file: Files) {
         try {
-            if (await this.validate(file)) {
+            let isValid = await this.validate(file);
+            if (isValid) {
                 let filesData = await this.filesDao.save(file);
                 let returnData = {
                     id: file.id,
+                    url: file.url,
                     message: "Saved Successfully!!",
                 };
                 return returnData;

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { Files } from "../entities/Files";
 import { FilesService } from "../services/FilesService";
-
+const path = require("path");
 export class FilesController {
     private router: Router = Router();
     private service = new FilesService();
@@ -37,14 +37,21 @@ export class FilesController {
 
                 sampleFile = await request.files.sampleFile;
 
-                uploadPath = __dirname + "/uploads/" + sampleFile.name;
+                uploadPath = path.join(__dirname, "../../assets" + "/uploads/" + sampleFile.name);
 
+                console.log("+++++uploadPath++++++", uploadPath);
                 let result = null;
 
                 reqData.name = sampleFile.name;
                 reqData.mimeType = sampleFile.mimetype;
                 reqData.url = uploadPath;
                 result = await this.service.save(reqData);
+
+                sampleFile.mv(uploadPath, (err: any) => {
+                    if (err) {
+                        return response.send({ status: 0, error: "error while saving file!" });
+                    }
+                });
 
                 response.send({ status: 1, data: result });
             } catch (error) {

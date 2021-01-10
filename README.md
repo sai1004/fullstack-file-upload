@@ -1,13 +1,14 @@
 # fullstack-file-upload
 
-stack 
+Tech stack Used
 
 1. Angular 9
-2. Nodejs - Express 
-3. Mysql
+2. Nodejs - Express (Frame-work) 
+3. Mysql (Version 5.7)
 
 
 Lets Start With Database (Mysql)
+
 
 Create Data
 
@@ -33,4 +34,56 @@ Create A Table to store file info
     );
     
     
+
+Now Let's Setup NodeJs Server
+
+
+mkdir fullstack-file-upload
+
+cd  fullstack-file-upload
+
+
+mkdir nodejs-server
+
+cd nodejs-server 
+
+Init Node Server Creates Package.json file
+
+    npm init -y 
+
+Now Install npm packages dependencies 
+
+ 
+Genrate ts config file
+
+    npx tsc --init --rootDir src --outDir dist --esModuleInterop --resolveJsonModule --lib es6,dom --module commonjs
+
+
+These are dev dependencies
+
+        npm install @types/express --save-dev
+        npm install @types/body-parser --save-dev
+        npm install @types/uuid --save-dev
+        npm install @types/node --save-dev
+        npm install dotenv --save-dev
+        npm install nodemon --save-dev
+        npm install ts-node --save-dev
+        npm install typescript --save-dev
+
+
+        npm install express --save
+        npm install body-parser --save
+        npm install typeorm --save
+        npm install mysql --save
+        npm install cors --save
+        npm install express-fileupload --save
+        npm install morgan --save
+        npm install uuid --save
+           
     
+
+
+ 
+
+
+

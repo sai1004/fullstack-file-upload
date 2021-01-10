@@ -83,6 +83,21 @@ These are dev dependencies
     
 
 
+Project Structure:
+
+    nodejs-server
+            ├───assets
+            │   ├───docs
+            │   └───uploads
+            ├───docs
+            └───src
+                ├───config
+                ├───dao
+                ├───entities
+                ├───routes
+                └───services
+                |
+                index.ts
  
 
 

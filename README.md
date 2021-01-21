@@ -3,12 +3,10 @@
 Tech stack Used
 
 1. Angular 9
-2. Nodejs - Express (Frame-work) 
+2. Nodejs - Express (Frame-work)
 3. Mysql (Version 5.7)
 
-
 Lets Start With Database (Mysql)
-
 
 Create Data
 
@@ -32,40 +30,33 @@ Create A Table to store file info
           updated_on timestamp not null default now()
 
     );
-    
-    
 
 Now Let's Setup NodeJs Server
 
+    mkdir fullstack-file-upload
 
-mkdir fullstack-file-upload
+    cd fullstack-file-upload
 
-cd  fullstack-file-upload
+    mkdir nodejs-server
 
-
-mkdir nodejs-server
-
-cd nodejs-server 
+    cd nodejs-server
 
 Init Node Server Creates Package.json file
 
-    npm init -y 
+    npm init -y
 
-Now Install npm packages dependencies 
+Now Install npm packages dependencies
 
- 
 Genrate ts config file
 
     npx tsc --init --rootDir src --outDir dist --esModuleInterop --resolveJsonModule --lib es6,dom --module commonjs
 
-
-#TypeScript configuration
+# TypeScript configuration
 
 Also, make sure you are using TypeScript version 3.3 or higher, and you have enabled the following settings in tsconfig.json:
 
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-
 
 These are dev dependencies
 
@@ -87,8 +78,6 @@ These are dev dependencies
         npm install express-fileupload --save
         npm install morgan --save
         npm install uuid --save
-           
-    
 
 
 Project Structure:
@@ -106,10 +95,7 @@ Project Structure:
                 └───services
                 |
                 index.ts
- 
 
-typeORM 
+typeORM
 
     https://github.com/typeorm/typeorm
-
-

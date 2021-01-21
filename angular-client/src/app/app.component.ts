@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
                 let url = res['data'].url;
                 this.filesInServer.push(url);
                 console.log('url', url);
-                this.clear();
+                // this.clear();
                 this.isLoading = false;
             }
         });

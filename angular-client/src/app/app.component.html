@@ -1,11 +1,21 @@
-<mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
-<form #demoForm="ngForm">
-    <file-upload [(ngModel)]="uploadedFiles" name="files" (change)="handelFile()"></file-upload>
-</form>
-<img src="https://i.imgur.com/Er2lmge.jpeg" alt="img" height="100px" />
-<img src="D:\work\practice\challenges\-file-upload\nodejs-server\assets\uploads\doctor2.png" alt="img" height="100px" />
-<!-- <div *ngIf="filesInServer.length > 0"> -->
-<ng-container *ngFor="let urls of filesInServer">
-    <div></div>
-</ng-container>
-<!-- </div> -->
+<section >
+    <div Align="center">
+        <h1>Upload Files </h1>
+         
+    </div>
+    <div class="card">
+        <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+        <form #demoForm="ngForm">
+            <file-upload [(ngModel)]="uploadedFiles" name="files" (change)="handelFile()"></file-upload>
+        </form>
+        <!-- <img src="https://i.imgur.com/Er2lmge.jpeg" alt="img" height="100px" /> -->
+       
+        <!-- <div *ngIf="filesInServer.length > 0"> -->
+        <ng-container *ngFor="let urls of filesInServer">
+            <div>
+                <img [src]="urls" alt="">
+            </div>
+        </ng-container>
+        <!-- </div> -->
+    </div>
+</section>

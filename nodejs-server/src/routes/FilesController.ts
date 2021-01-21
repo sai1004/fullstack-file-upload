@@ -10,8 +10,11 @@ export class FilesController {
         this.router.get("/files", async (request: any, response: any) => {
             try {
                 let reqData: any;
-
+                let files = {};
                 reqData = request.query ? request.query : {};
+
+                files = path.join(__dirname, "../../assets" + "/uploads/");
+
                 let result: Files = null;
 
                 result = await this.service.findAll(reqData);

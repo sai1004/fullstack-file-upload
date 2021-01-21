@@ -59,6 +59,14 @@ Genrate ts config file
     npx tsc --init --rootDir src --outDir dist --esModuleInterop --resolveJsonModule --lib es6,dom --module commonjs
 
 
+#TypeScript configuration
+
+Also, make sure you are using TypeScript version 3.3 or higher, and you have enabled the following settings in tsconfig.json:
+
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+
+
 These are dev dependencies
 
         npm install @types/express --save-dev

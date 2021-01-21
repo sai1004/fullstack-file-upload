@@ -6,7 +6,7 @@ export let dbConfig: any = {
     host: "localhost",
     port: 3306,
     username: "root",
-    password: "secret",
+    password: "", // mysql password
     database: "files_db",
     logging: true,
     synchronize: false,

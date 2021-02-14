@@ -8,7 +8,7 @@ Tech stack Used
 
 Lets Start With Database (Mysql)
 
-Create Data
+Create Database
 
     create database files_db;
 
